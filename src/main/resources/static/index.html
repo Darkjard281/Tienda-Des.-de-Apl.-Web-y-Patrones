@@ -8,20 +8,99 @@ and open the template in the editor.
     <head>
         <title>Tienda en linea</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Pagina de leccion2"/>
+        <meta name="keywords" content="html5, css, web fidelitas">
+        <link href="CSS/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
     <body>
-        <div>
-            <h1 style="text-align:center">Home</h1>
-                <p>Bienvendios a la página de la Tienda en línea ...</p>
-        </div>
-        <p style="text-align:left">Mi nombre es Jarod Viquez</p>
-        <p style="text-align:right">Aqui trabajare</p>
-        <p style="text-align:center">Para reforzar mi conocimiento en HTML</p>
-        <br>
-        <br>
-        <p>Última linea</p>
-
+        <header id="encabezado">
+            <h1>Tienda en linea</h1>
+            <br>
+        </header>
+        <nav id="menu">
+            <a href="Ejemplo9.html">Atras</a>
+            <a href=index.html">Home</a>
+            <a href="Ejemplo2.html">Adelante</a>
+        </nav>
+        <aside id="barraLateral">
+            <h2>Productos mas vendidos</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </aside>
+        <section id="contenido">
+            <h2>Articulos Principales</h2>
+            <article>
+                <header>Asus Vivobook</header>
+                <p class="descripcion">
+                    <cite>Lorem ipsum dolor sit amet,</cite>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <figure>
+                    <img src="images/Equipo1.jpg" width="200" alt="alt"/>
+                    <figcaption>Imagen con fines ilustrativos</figcaption>
+                </figure>
+            </article>
+            <article>
+                <header>Alienware ATD 200</header>
+                <p class="descripcion">
+                    <strong>Lorem ipsum dolor sit amet,</strong>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <figure>
+                    <img src="images/Equipo2.jpg" width="200" alt="alt"/>
+                    <figcaption>Mas vendido</figcaption>
+                </figure>
+            </article>
+            <article>
+                <header>Impresora 3D</header>
+                <p class="descripcion">
+                    Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <figure>
+                    <img src="images/Equipo3.jpg" width="200" alt="alt"/>
+                    <figcaption>Mas economico</figcaption>
+                </figure>
+            </article>
+            <article>
+                <h2>Lineas de Productos</h2>
+                <table border="0">
+                    <thead id="encabezadoTabla">
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Descricion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaResumen">
+                        <tr>
+                            <td>1</td>
+                            <td>Teclados</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Monitores</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Headset</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Baterias</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Cargadores</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>portatiles</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+        <footer id="pieDePagina">
+            Derechos reservados &copy; 2022  <address style="display: inline">San Joaquin, Flores</address> <address style="display: inline">Tel 8480-6994</address> 
+        </footer>
     </body>
 </html>
