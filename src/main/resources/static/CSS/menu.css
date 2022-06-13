@@ -11,7 +11,7 @@ body{
 
 .header{
     background-color: #076aF0;
-    height: 12%;
+    height: 10%;
     position: fixed;
     top:0;
     left:0;
@@ -47,7 +47,7 @@ body{
         font-size: 18px;
         margin: 0 10px;
         line-height: 12vh;
-        width: max-content;
+        
 }
 
 .nav-menu-item:hover{
