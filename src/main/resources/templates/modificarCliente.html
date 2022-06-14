@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html mlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1>Datos del cliente</h1>
+            <a th:ref="@{/}">Regresar</a>
+            <br>
+            <br>
+            <form th:action="@{/guardarCliente}" method="POST" th:object="${cliente}">
+                <input type="hidden" name="id" th:field="*{idCliente}">
+                <label for="nombre">Nombre: </label>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+                <br>
+                <label for="apellidos">Apellidos: </label>
+                <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}"/>
+                <br>
+                <label for="correo">Correo: </label>
+                <input type="email" id="correo" name="correo" th:field="*{correo}"/>
+                <br>
+                <label for="telefono">Nombre</label>
+                <input type="tel" id="telefono" name="telefono" th:field="*{telefono}"/>
+                <br>
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form>      
+        </div>
+    </body>
+</html>
