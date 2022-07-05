@@ -4,51 +4,34 @@
         <title>Techshop</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace = "layout/plantilla ::header"/>
-        <!--
-        <h1>Ejemplo 1</h1>
-        <div>Hola</div>
-        <p th:text="${mensaje}"></p>/*Toma el nombre de la variable*/
-        <h2>Ejemplo 2</h2>
-        <p>Nombre: <span th:text="${temp.nombre}"></span></p>
-        <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
-        <p>Correo: <span th:text="${cliente.correo}"></span></p>
-        <p>Telefono: <span th:text="${cliente.telefono}"></span></p>
-        -->
-        <h3>Ejemplo 3</h3>
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
-        <br>
-        <br>
-        <div th:if= "${clientes != null and !clientes.empty}"><!-- Despliega la vista si cumple la condicional-->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>ID</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="item : ${clientes}"> <!--item es un valor con el que iteramos los clientes// each solo se utiliza en lista-->
-                        <td th:text="${item.idCliente}"></td>
-                        <td th:text="${item.nombre}"></td>
-                        <td th:text="${item.apellidos}"></td>
-                        <td th:text="${item.telefono}"></td>
-                        <td th:text="${item.correo}"></td>
-                        <td><a th:href= "@{/modificarCliente/}+ ${item.idCliente}">Modificar</a></td>
-                        <td><a th:href= "@{/eliminarCliente/}+ ${item.idCliente}">Eliminar</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div th:if="${clientes == null or clientes.empty}"> <!-- Despliega la vista si cumple la condicional-->
-            No hay lista de clientes por mostrar
+        <div class="contenido">
+            <h2>Nuestros Articulos</h2>
+            <br>
+            <br>
+            <div th:if= "${articulos != null and !articulos.empty}"><!-- Despliega la vista si cumple la condicional-->
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${articulos}"> 
+                            <td th:text="${item.descripcion}"></td>
+                            <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
+                            <td><a th:href="@{/carrito/agregar/}+${item.idArticulo}">Agregar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${articulos == null or articulos.empty}"> <!-- Despliega la vista si cumple la condicional-->
+                No hay lista de articulos por mostrar
+            </div>
         </div>
         <footer th:replace = "layout/plantilla ::footer"/>
     </body>

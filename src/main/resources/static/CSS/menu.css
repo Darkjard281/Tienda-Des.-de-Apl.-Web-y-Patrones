@@ -59,3 +59,30 @@ body{
     padding: 8px 12px;
     border-radius: 4px
 }
+
+.nav-menu-item:hover {
+    font-size: 22px;
+    background-color: #024070;
+    transition: 1s;
+}
+
+.footer{
+    background-color: black;
+    text-align: center;
+    height: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+.contenido{
+    background-color: wheat;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+}
