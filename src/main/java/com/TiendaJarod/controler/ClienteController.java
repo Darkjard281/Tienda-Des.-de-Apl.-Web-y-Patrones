@@ -44,7 +44,7 @@ public class ClienteController {
     public String modificarCliente(Cliente cliente, Model model) {
         cliente = clienteService.getCliente(cliente);
         model.addAttribute("cliente", cliente);
-        return "/cliente/modificar/";
+        return "/cliente/modificar";
     }
 
     @GetMapping("cliente/eliminar/{idCliente}")
