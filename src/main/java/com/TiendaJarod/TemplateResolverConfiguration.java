@@ -1,4 +1,4 @@
-
+/*
 package com.TiendaJarod;
 
 import org.springframework.context.annotation.Bean;
@@ -58,3 +58,4 @@ public class TemplateResolverConfiguration {
     
     
 }
+*/
