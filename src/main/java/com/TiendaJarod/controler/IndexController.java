@@ -1,29 +1,76 @@
 package com.TiendaJarod.controler;
 
+
+import com.TiendaJarod.dao.UsuarioDao;
+import com.TiendaJarod.domain.Usuario;
+import com.TiendaJarod.domain.Carrito;
+import com.TiendaJarod.domain.CarritoDetalle;
+import com.TiendaJarod.service.ArticuloService;
+import com.TiendaJarod.service.CarritoDetalleService;
+import com.TiendaJarod.service.CarritoService;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.TiendaJarod.service.ArticuloService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 
-@Controller/*Nos permite utilizar la funciones de un controlador*/
-@Slf4j/*Registro de bitacoras en el output*/
 
-public class IndexController { //Servidor busca un controlador que se llame index omite lo que dice controler
-
-    @Autowired//Si no se ha instanciado en esta clase un objeto de este tipo el automaticamente lo hace
+@Controller
+@Slf4j
+public class IndexController {
+    
+    @Autowired    
     private ArticuloService articuloService;
+    
+    @Autowired    
+    private CarritoService carritoService;
+    
+    @Autowired 
+    private CarritoDetalleService carritoDetalleService;
+    
+    @Autowired 
+    private UsuarioDao usuarioDao;
+    
+    @GetMapping("/")
+    public String inicio(Model model, HttpServletRequest request) {        
 
-    @GetMapping("/")/*AccionDefault*/
-    public String inicio(Model model) {//Con el podemos mandar a los documentos html(index) un objeto model
-        log.info("Ahora utilizamos MVC");//Enlazado con SLF4J
-
-        var articulos = articuloService.getArticulos(true);//Busca todos los objetos de tipo cliente en la base de datos y los guarda en el var
+        //Obtener el usuario llegado        
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails user = null;
+        if (principal instanceof UserDetails) {
+            user = (UserDetails) principal;
+        }
+        //Validar si es usuario de un cliente        
+        boolean esCliente = false;
+        
+        if (user.getAuthorities().size() == 1) {
+            for (var rol : user.getAuthorities()) {
+                if (rol.getAuthority().equals("ROLE_USER")) {
+                    esCliente = true;
+                }
+            }
+        }
+        if (esCliente) {
+            Usuario usuario = usuarioDao.findByUsername(user.getUsername());
+            Carrito carrito = carritoService.getCarritoCliente(usuario.getIdCliente());
+            request.getSession().setAttribute("idCliente", usuario.getIdCliente());
+            request.getSession().setAttribute("idCarrito", carrito.getIdCarrito());
+            
+            //Consultar los items            
+            List<CarritoDetalle> carritoDetalles = carritoDetalleService.getCarritoDetalles(carrito.getIdCarrito());
+            int cantidadArticulosCarrito = carritoDetalles.size();
+            model.addAttribute("cantidadArticulosCarrito", cantidadArticulosCarrito);
+        }
+        
+        log.info("Ahora se usa arquitectura MVC");
+        var articulos = articuloService.getArticulos(true);
         model.addAttribute("articulos", articulos);
-        return "index";/*Buscar en templates una vista llamada index*/
-
+        model.addAttribute("esCliente", esCliente);
+        return "index";
     }
-
 }

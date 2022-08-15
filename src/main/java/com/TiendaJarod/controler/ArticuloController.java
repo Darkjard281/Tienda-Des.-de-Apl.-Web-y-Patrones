@@ -47,6 +47,8 @@ public class ArticuloController {
 
     @GetMapping("/articulo/modificar/{idArticulo}")
     public String modificarArticulo(Articulo articulo, Model model) {
+        var categorias = categoriaService.getCategorias(false);
+        model.addAttribute("categorias", categorias);
         articulo = articuloService.getArticulo(articulo);
         model.addAttribute("articulo", articulo);
         return "/articulo/modificar";
